@@ -3,7 +3,7 @@ import AuthProvider from "./context/AuthContext";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 // import EditProfile from "./pages/EditProfile";
 // import ViewProfile from "./pages/ViewProfile";
 // import Directory from "./pages/Directory";
@@ -19,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="/edit-profile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} /> */}
           {/* <Route path="/profile/:id" element={<ViewProfile />} /> */}
           {/* <Route path="/directory" element={<Directory />} /> */}

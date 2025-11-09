@@ -34,7 +34,7 @@ export default function Login() {
       <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-slate-200">
 
         <h1 className="text-2xl font-semibold text-slate-800 text-center">
-          Professor Login
+          Faculty Login
         </h1>
         <p className="text-sm text-slate-500 text-center mt-1">
           Access your Faculty Profile Dashboard
@@ -83,7 +83,7 @@ export default function Login() {
         <p className="mt-6 text-sm text-center text-slate-600">
           New here?{" "}
           <Link to="/register" className="text-slate-900 font-medium hover:underline">
-            Register as Professor
+            Register as Faculty
           </Link>
         </p>
       </div>

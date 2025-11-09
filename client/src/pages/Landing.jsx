@@ -8,7 +8,7 @@ export default function Landing() {
       <header className="container-padding">
         <div className="mx-auto max-w-7xl py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-indigo-600/90 shadow-sm"></div>
+            <Link to="/" className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/90 text-white text-sm font-semibold">FIS</Link>
             <span className="text-xl font-semibold text-slate-800">
               MANIT Faculty Information System
             </span>
@@ -82,7 +82,7 @@ export default function Landing() {
                       <path d="M4 22v-1a7 7 0 0 1 14 0v1" />
                     </svg>
                   </span>
-                  <h3 className="font-semibold text-slate-900">Login as Professor</h3>
+                  <h3 className="font-semibold text-slate-900">Login as Faculty</h3>
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
                   Update your profile, publications, and projects.
@@ -103,7 +103,7 @@ export default function Landing() {
                       <circle cx="12" cy="12" r="9" />
                     </svg>
                   </span>
-                  <h3 className="font-semibold text-slate-900">Register as Professor</h3>
+                  <h3 className="font-semibold text-slate-900">Register as Faculty</h3>
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
                   Create your account with EmpID and start building your profile.
