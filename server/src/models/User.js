@@ -4,11 +4,11 @@ import bcrypt from "bcryptjs";
 const UserSchema = new mongoose.Schema({
   empId: { type: String, required: true, unique: true, trim: true },
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
-  password: { type: String, required: true, minlength: 8 },
+  passwordHash: { type: String, required: true, minlength: 8 },
   role: { type: String, enum: ["faculty", "admin"], default: "faculty" },
   isActive: { type: Boolean, default: true },
   lastLoginAt: Date,
-  createdAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now }
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }

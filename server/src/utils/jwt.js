@@ -1,10 +1,13 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const ACCESS_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
-const ACCESS_EXPIRES = process.env.ACCESS_TOKEN_EXPIRES || "15m"; // e.g., '15m'
-const REFRESH_EXPIRES = process.env.REFRESH_TOKEN_EXPIRES || "7d"; // '7d'
+const ACCESS_EXPIRES = process.env.ACCESS_TOKEN_EXPIRES || "15m";
+const REFRESH_EXPIRES = process.env.REFRESH_TOKEN_EXPIRES || "7d"; 
 
 export function createAccessToken(payload) {
   return jwt.sign(payload, ACCESS_SECRET, { expiresIn: ACCESS_EXPIRES });
@@ -29,7 +32,7 @@ export function refreshExpirySeconds() {
     h: 3600,
     d: 86400,
   };
-  
+
   const val = process.env.REFRESH_TOKEN_EXPIRES || "7d";
   const num = parseInt(val, 10);
   const unit = val.replace(String(num), "").trim() || "s";
