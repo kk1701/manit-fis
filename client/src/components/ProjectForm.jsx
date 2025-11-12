@@ -13,7 +13,7 @@ export default function ProjectForm({ initial, onClose, onSaved }) {
     startDate: initial?.startDate ? isoDate(initial.startDate) : "",
     endDate: initial?.endDate ? isoDate(initial.endDate) : "",
     futurePlans: initial?.futurePlans || "",
-    status: initial?.status || "ongoing",
+    status: initial?.status || "Ongoing",
   });
   const [saving, setSaving] = useState(false);
   const isEdit = Boolean(initial && initial._id);

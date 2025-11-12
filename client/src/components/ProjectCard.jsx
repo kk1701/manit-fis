@@ -22,8 +22,12 @@ export default function ProjectCard({ item, onEdit, onDelete }) {
           <div className="mt-1 text-xs text-slate-600">Status: {item.status || '—'} · Future plans: {item.futurePlans || "—"}</div>
         </div>
         <div className="flex flex-col gap-1">
-          <button onClick={onEdit} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs hover:bg-slate-100">Edit</button>
-          <button onClick={handleDelete} className="rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs text-red-700 hover:bg-red-50">Delete</button>
+          {onEdit && (
+            <button onClick={onEdit} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs hover:bg-slate-100">Edit</button>
+          )}
+          {onDelete && (
+            <button onClick={handleDelete} className="rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs text-red-700 hover:bg-red-50">Delete</button>
+          )}
         </div>
       </div>
     </div>

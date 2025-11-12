@@ -4,7 +4,8 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-// import Directory from "./pages/Directory";
+import Directory from "./pages/Directory";
+import FacultyProfile from "./pages/FacultyProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./index.css";
 
@@ -18,7 +19,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          {/* <Route path="/directory" element={<Directory />} /> */}
+          <Route path="/directory" element={<Directory />} />
+          <Route path="/faculty/:id" element={<FacultyProfile />} />
 
         </Routes>
       </BrowserRouter>

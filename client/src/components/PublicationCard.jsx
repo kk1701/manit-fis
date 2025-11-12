@@ -23,8 +23,12 @@ export default function PublicationCard({ item, onEdit, onDelete }) {
           )}
         </div>
         <div className="flex flex-col gap-1">
-          <button onClick={onEdit} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs hover:bg-slate-100">Edit</button>
-          <button onClick={handleDelete} className="rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs text-red-700 hover:bg-red-50">Delete</button>
+          {onEdit && (
+            <button onClick={onEdit} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs hover:bg-slate-100">Edit</button>
+          )}
+          {onDelete && (
+            <button onClick={handleDelete} className="rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs text-red-700 hover:bg-red-50">Delete</button>
+          )}
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ export default function AcademicSection({ me, onSaved }) {
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({
     department: me?.department || "",
+    designation: me?.designation || "",
     currentSubjects: me?.currentSubjects || [],
     prevTaughtSubjects: me?.prevTaughtSubjects || [],
   });
@@ -15,6 +16,7 @@ export default function AcademicSection({ me, onSaved }) {
   useEffect(() => {
     setForm({
       department: me?.department || "",
+      designation: me?.designation || "",
       currentSubjects: me?.currentSubjects || [],
       prevTaughtSubjects: me?.prevTaughtSubjects || [],
     });
@@ -38,6 +40,7 @@ export default function AcademicSection({ me, onSaved }) {
       {!editing ? (
         <div className="text-sm text-slate-700">
           <Row label="Department" value={form.department || "—"} />
+          <Row label="Designation" value={form.designation || "—"} />
           <Row label="Currently Teaching" value={(form.currentSubjects || []).join(", ") || "—"} />
           <Row label="Previously Taught (BTech/MTech)" value={(form.prevTaughtSubjects || []).join(", ") || "—"} />
         </div>
@@ -46,6 +49,10 @@ export default function AcademicSection({ me, onSaved }) {
           <div>
             <label className="block text-sm font-medium text-slate-700">Department</label>
             <input value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })} className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700">Designation</label>
+            <input value={form.designation} onChange={(e) => setForm({ ...form, designation: e.target.value })} className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
           </div>
           <TagInput label="Currently Teaching (comma separated)" value={form.currentSubjects} onChange={(arr) => setForm({ ...form, currentSubjects: arr })} />
           <TagInput label="Previously Taught (BTech/MTech; comma separated)" value={form.prevTaughtSubjects} onChange={(arr) => setForm({ ...form, prevTaughtSubjects: arr })} />

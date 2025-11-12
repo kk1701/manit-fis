@@ -56,4 +56,15 @@ router.put("/me", requireAuth, async (req, res, next) => {
   }
 });
 
+// Public: get faculty profile by id
+router.get("/:id", async (req, res, next) => {
+  try {
+    const faculty = await Faculty.findById(req.params.id).populate("userInfo");
+    if (!faculty) return res.status(404).json({ message: "Faculty not found" });
+    return res.json(faculty);
+  } catch (err) {
+    next(err);
+  }
+});
+
 export default router;
