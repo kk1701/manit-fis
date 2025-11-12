@@ -119,18 +119,40 @@ export default function Landing() {
             </p>
           </div>
 
-          {/* Simple illustration block */}
+          {/* Illustration: research & collaboration */}
           <div className="relative">
             <div className="mx-auto max-w-lg rounded-3xl bg-white shadow-sm border border-slate-200 p-6">
-              <div className="h-40 rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 opacity-90"></div>
-              <div className="-mt-10 grid grid-cols-3 gap-3">
-                <div className="h-28 rounded-2xl bg-white border border-slate-200 shadow-sm"></div>
-                <div className="h-28 rounded-2xl bg-white border border-slate-200 shadow-sm"></div>
-                <div className="h-28 rounded-2xl bg-white border border-slate-200 shadow-sm"></div>
+              <div className="flex items-center justify-center h-40 rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 p-6">
+                <div className="text-white text-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto mb-3 h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6v6l4 2" />
+                  </svg>
+
+                  <div className="flex items-center justify-center gap-6">
+                    {/* users */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20v-2a4 4 0 0 0-3-3.87M9 20v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                    </svg>
+
+                    {/* book */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7a4 4 0 0 1 4-4h10v14H7a4 4 0 0 1-4-4zM21 7v10a4 4 0 0 0-4-4H9" />
+                    </svg>
+
+                    {/* search */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <p className="mt-5 text-sm text-slate-600">
-                This preview mimics cards for Publications / Projects / Research Areas you’ll see after logging in.
-              </p>
+
+              <div className="mt-4 text-center">
+                <h4 className="text-lg font-semibold text-slate-900">Profiles, Publications & Collaborations</h4>
+                <p className="mt-2 text-sm text-slate-600">
+                  Search faculty, browse publications and discover research collaborators — all in one place.
+                </p>
+              </div>
             </div>
           </div>
         </div>

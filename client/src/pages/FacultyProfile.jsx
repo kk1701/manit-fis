@@ -53,7 +53,7 @@ export default function FacultyProfile() {
       <header className="container-padding">
         <div className="mx-auto max-w-7xl py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link to="/" className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/90 text-white text-sm font-semibold">FIS</Link>
+            <Link to="" className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/90 text-white text-sm font-semibold">FIS</Link>
             <span className="text-xl font-semibold text-slate-800">
               MANIT Faculty Information System
             </span>
