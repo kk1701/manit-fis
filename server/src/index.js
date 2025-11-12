@@ -1,7 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import facultyRoutes from "./routes/facultyRoutes.js";
+import publicationRoutes from "./routes/publicationRoutes.js";
 import { connectDB } from "./config/dbConfig.js";
 
 dotenv.config();
@@ -11,10 +14,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 app.use(cookieParser());
 
+app.use(
+  cors({
+    origin: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
 connectDB();
 
-// mount auth routes
 app.use("/api/auth", authRoutes);
+app.use("/api/faculty", facultyRoutes);
+app.use("/api/publications", publicationRoutes);
 
 // generic error handler
 app.use((err, req, res, next) => {

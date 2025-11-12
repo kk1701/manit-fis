@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { api } from "../api/http";
 
 import ProfileHeader from "../components/ProfileHeader";
@@ -7,37 +8,30 @@ import AcademicSection from "../components/AcademicSection";
 import ResearchSection from "../components/ResearchSection";
 import ProjectsSection from "../components/ProjectSection";
 
-/**
- * Backend endpoints:
- *  - GET    /api/faculty/me
- *  - PUT    /api/faculty/me
- *  - GET    /api/publications/mine
- *  - POST   /api/publications
- *  - PUT    /api/publications/:id
- *  - GET    /api/projects/mine   (or /api/projects?mine=true)
- *  - POST   /api/projects
- *  - PUT    /api/projects/:id
- */
 
 export default function Dashboard() {
-  const [me, setMe] = useState("karan");
+  const [me, setMe] = useState("n");
   const [pubs, setPubs] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ignore = false;
     (async () => {
       try {
         setLoading(true);
-        const [meRes, pubsRes, projRes] = await Promise.all([
-          api("/faculty/me"),
-          api("/publications/mine"),
-          api("/projects/mine").catch(() => api("/projects?mine=true")),
-        ]);
+        const meRes = await api("/faculty/me");
+        console.log(meRes);
+
         if (!ignore) {
           setMe(meRes);
+          // Fetch publications for this faculty
+          const pubsRes = await api(`/publications?facultyId=${meRes._id}`).catch(() => []);
+          // const projRes = await api(`/projects?facultyId=${meRes._id}`).catch(() => []);
+          
           setPubs(Array.isArray(pubsRes) ? pubsRes : []);
           setProjects(Array.isArray(projRes) ? projRes : []);
         }
@@ -69,6 +63,10 @@ export default function Dashboard() {
           <h1 className="text-lg font-semibold text-slate-900">Professor Dashboard</h1>
           <div className="ml-auto flex items-center gap-2">
             <Link to="/directory" className="rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100">Public Directory</Link>
+            <button
+              onClick={() => { logout(); navigate("/login"); }}
+              className="rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 border border-slate-300 hover:bg-slate-100"
+            >Logout</button>
           </div>
         </div>
       </header>
@@ -89,15 +87,15 @@ export default function Dashboard() {
               <ResearchSection
                 groups={grouped}
                 onRefresh={async () => {
-                  const mine = await api('/publications/mine');
-                  setPubs(Array.isArray(mine) ? mine : []);
+                  const pubs = await api(`/publications?facultyId=${me._id}`);
+                  setPubs(Array.isArray(pubs) ? pubs : []);
                 }}
               />
               <ProjectsSection
                 items={projects}
                 onRefresh={async () => {
-                  const mine = await api('/projects/mine').catch(() => api('/projects?mine=true'));
-                  setProjects(Array.isArray(mine) ? mine : []);
+                  // const projs = await api(`/projects?facultyId=${me._id}`).catch(() => []);
+                  setProjects(Array.isArray(projs) ? projs : []);
                 }}
               />
             </section>

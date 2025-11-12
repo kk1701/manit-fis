@@ -6,7 +6,7 @@ const PublicationSchema = new mongoose.Schema({
   authors: [{ type: String }],
   year: Number,
   venue: String,
-  type: { type: String, enum: ["conference", "general", "book", "chapter"], default: "conference" },
+  type: { type: String, enum: ["Conference", "General", "Book", "Chapter"], default: "conference" },
   doi: String,
   url: String,
   indexing: [{ type: String }],

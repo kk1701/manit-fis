@@ -4,7 +4,6 @@ const FacultySchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, unique: true },
   empId: { type: String, required: true },
   name: { type: String, required: true, trim: true },
-  displayName: String,
   department: String,
   designation: String,
   email: String,

@@ -1,4 +1,6 @@
-export default function ResearchSubSection({ title, items, onEdit }) {
+import PublicationCard from "./PublicationCard.jsx";
+
+export default function ResearchSubSection({ title, items, onEdit, onDelete }) {
   return (
     <div className="rounded-xl border border-slate-200 p-4">
       <div className="mb-3 flex items-center justify-between">
@@ -9,7 +11,7 @@ export default function ResearchSubSection({ title, items, onEdit }) {
       ) : (
         <div className="grid gap-3">
           {items.map((p) => (
-            <PublicationCard key={p._id} item={p} onEdit={()=>onEdit(p)} />
+            <PublicationCard key={p._id} item={p} onEdit={()=>onEdit(p)} onDelete={onDelete} />
           ))}
         </div>
       )}

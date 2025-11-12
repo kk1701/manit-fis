@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export default function TagInput({ label, value, onChange }) {
   const [text, setText] = useState(Array.isArray(value) ? value.join(", ") : "");
   useEffect(() => { setText(Array.isArray(value) ? value.join(", ") : ""); }, [value]);

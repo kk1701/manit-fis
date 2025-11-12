@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Input from "./helpers/Input";
 import Select from "./helpers/Select";
+import { api } from "../api/http";
 
 export default function PublicationForm({ initial, onClose, onSaved }) {
   const [form, setForm] = useState({
@@ -11,6 +12,7 @@ export default function PublicationForm({ initial, onClose, onSaved }) {
     venue: initial?.venue || "",
     type: initial?.type || "conference", // user can choose
     doi: initial?.doi || "",
+    url: initial?.url || "",
     indexing: (initial?.indexing || []).join(", "),
     scope: initial?.scope || "International",
   });
@@ -26,10 +28,13 @@ export default function PublicationForm({ initial, onClose, onSaved }) {
         indexing: form.indexing.split(',').map((s) => s.trim()).filter(Boolean),
         year: form.year ? Number(form.year) : undefined,
       };
+
+      console.log("PAYLOAD:", payload);
+
       if (isEdit) {
-        await call(`/publications/${initial._id}`, { method: 'PUT', body: payload });
+        await api(`/publications/${initial._id}`, { method: 'PUT', body: payload });
       } else {
-        await call('/publications', { method: 'POST', body: payload });
+        await api('/publications', { method: 'POST', body: payload });
       }
       await onSaved();
     } catch (e) {
@@ -47,8 +52,9 @@ export default function PublicationForm({ initial, onClose, onSaved }) {
         <Input label="Authors (comma separated)" value={form.authors} onChange={(v) => setForm({ ...form, authors: v })} />
         <Input label="Year" value={form.year} onChange={(v) => setForm({ ...form, year: v })} type="number" />
         <Input label="Venue (journal/conference)" value={form.venue} onChange={(v) => setForm({ ...form, venue: v })} />
-        <Select label="Type" value={form.type} onChange={(v) => setForm({ ...form, type: v })} options={["Conference","General","Book","Chapter"]} />
+  <Select label="Type" value={form.type} onChange={(v) => setForm({ ...form, type: v })} options={["Conference","General","Book","Chapter"]} />
         <Input label="DOI (optional)" value={form.doi} onChange={(v) => setForm({ ...form, doi: v })} />
+        <Input label="URL (optional)" value={form.url} onChange={(v) => setForm({ ...form, url: v })} />
         <Input label="Indexing (comma separated)" value={form.indexing} onChange={(v) => setForm({ ...form, indexing: v })} />
         <Select label="Scope" value={form.scope} onChange={(v) => setForm({ ...form, scope: v })} options={["International","National","Other"]} />
       </div>

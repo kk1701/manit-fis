@@ -5,6 +5,7 @@ export async function api(path, options = {}) {
   const headers = { "Content-Type": "application/json", ...(options.headers || {}) };
   if (token) headers.Authorization = `Bearer ${token}`;
 
+  console.log("ENDPOINT: ", API_BASE + path);
   const res = await fetch(API_BASE + path, {
     ...options,
     headers,

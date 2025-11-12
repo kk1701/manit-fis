@@ -18,7 +18,7 @@ export default function Login() {
 
     try {
       const res = await login(email, password);
-      if (res.token) {
+      if (res.accessToken) {
         navigate("/dashboard");
       } else {
         setError(res.message || "Invalid login.");

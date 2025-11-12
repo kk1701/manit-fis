@@ -29,10 +29,10 @@ export default function ResearchSection({ groups, onRefresh }) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <ResearchSubSection title="Conference Papers" items={groups.conference} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} />
-        <ResearchSubSection title="General Research Papers" items={groups.general} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} />
-        <ResearchSubSection title="Books" items={groups.book} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} />
-        <ResearchSubSection title="Book Chapters" items={groups.chapter} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} />
+        <ResearchSubSection title="Conference Papers" items={groups.conference} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} onDelete={onRefresh} />
+        <ResearchSubSection title="General Research Papers" items={groups.general} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} onDelete={onRefresh} />
+        <ResearchSubSection title="Books" items={groups.book} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} onDelete={onRefresh} />
+        <ResearchSubSection title="Book Chapters" items={groups.chapter} onEdit={(it)=>{ setEditingItem(it); setShowModal(true); }} onDelete={onRefresh} />
       </div>
 
       {showModal && (

@@ -9,9 +9,10 @@ export default function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     const res = await api("/auth/login", { method: "POST", body: { email, password } });
-    if(res.token){
-      localStorage.setItem("token", res.token);
-      setToken(res.token);
+
+    if(res.accessToken){
+      localStorage.setItem("token", res.accessToken);
+      setToken(res.accessToken);
     }
     return res;
   };

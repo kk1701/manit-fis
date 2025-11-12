@@ -30,7 +30,7 @@ export default function Register() {
         body: form,
       });
 
-      if (res?.id) {
+        if (res?.userId) {
         navigate("/login");
       } else {
         setError(res.message || "Registration failed. Try again.");
