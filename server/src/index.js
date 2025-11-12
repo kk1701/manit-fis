@@ -5,6 +5,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import facultyRoutes from "./routes/facultyRoutes.js";
 import publicationRoutes from "./routes/publicationRoutes.js";
+import projectRoutes from "./routes/projectRoutes.js"
 import { connectDB } from "./config/dbConfig.js";
 
 dotenv.config();
@@ -27,6 +28,7 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/publications", publicationRoutes);
+app.use("/api/projects", projectRoutes);
 
 // generic error handler
 app.use((err, req, res, next) => {

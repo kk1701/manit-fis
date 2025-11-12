@@ -6,7 +6,7 @@ const ProjectSchema = new mongoose.Schema({
   description: String,
   startDate: Date,
   endDate: Date,
-  status: { type: String, enum: ["planned", "ongoing", "completed"], default: "ongoing" },
+  status: { type: String, enum: ["Planned", "Ongoing", "Completed"], default: "ongoing" },
   futurePlans: String,
   collaborators: [{ name: String, role: String, affiliation: String }],
   attachments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Attachment" }],

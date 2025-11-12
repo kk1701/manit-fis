@@ -29,7 +29,7 @@ export default function ProjectsSection({ items, onRefresh }) {
 
       <div className="grid gap-3">
         {items && items.map((pr) => (
-          <ProjectCard key={pr._id} item={pr} onEdit={() => { setEditingItem(pr); setShowModal(true); }} />
+          <ProjectCard key={pr._id} item={pr} onEdit={() => { setEditingItem(pr); setShowModal(true); }} onDelete={onRefresh} />
         ))}
       </div>
 
